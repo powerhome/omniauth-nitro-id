@@ -4,8 +4,6 @@ require "spec_helper"
 
 describe OmniAuth::Strategies::NitroId do
   let(:access_token) { instance_double("AccessToken", :options => {}, :[] => "user") }
-  let(:parsed_response) { instance_double("ParsedResponse") }
-  let(:response) { instance_double("Response", parsed: parsed_response) }
   let(:custom_client) do
     OmniAuth::Strategies::NitroId.new(:test_app,
                                       issuer: "https://example-host.com/",

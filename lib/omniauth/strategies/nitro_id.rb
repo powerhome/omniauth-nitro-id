@@ -5,10 +5,14 @@ require "omniauth_openid_connect"
 module OmniAuth
   module Strategies
     class NitroId < OmniAuth::Strategies::OpenIDConnect
-      option :name, "nitro_id"
+      DEFAULT_STRATEGY_NAME = "nitro_id"
+      DEFAULT_ISSUER = "https://id.powerhrg.com/"
+      DEFAULT_HOST = "id.powerhrg.com"
+
+      option :name, DEFAULT_STRATEGY_NAME
       option :discovery, true
-      option :issuer, "https://id.powerhrg.com/"
-      option :client_options, host: "id.powerhrg.com"
+      option :issuer, DEFAULT_ISSUER
+      option :client_options, host: DEFAULT_HOST
     end
   end
 end

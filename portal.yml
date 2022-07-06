@@ -8,5 +8,5 @@ metadata:
     backstage.io/techdocs-ref: dir:.
 spec:
   type: library
-  owner: s-h-i-e-l-d
+  owner: shield
   lifecycle: production

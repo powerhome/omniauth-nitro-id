@@ -1,0 +1,6 @@
+site_name: OmniAuth NitroID
+site_description: OmniAuth NitroID Documentation
+nav:
+  - "Home": "README.md"
+plugins:
+  - techdocs-core

@@ -1,0 +1,11 @@
+require:
+  - rubocop-powerhome
+
+Rails:
+  Enabled: false
+
+Gemspec/RequireMFA:
+  Enabled: false
+
+Naming/FileName:
+  Enabled: false

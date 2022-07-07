@@ -1,0 +1,12 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: omniauth-nitro-id
+  title: OmniAuth NitroID
+  description: NitroID OmniAuth Strategy
+  annotations:
+    backstage.io/techdocs-ref: dir:.
+spec:
+  type: library
+  owner: shield
+  lifecycle: production

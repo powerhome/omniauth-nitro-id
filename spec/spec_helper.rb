@@ -2,7 +2,7 @@
 
 require "rspec"
 require "omniauth"
-require "omniauth_nitro_id"
+require "omniauth-nitro-id"
 
 RSpec.configure do |config|
   config.extend OmniAuth::Test::StrategyMacros, type: :strategy

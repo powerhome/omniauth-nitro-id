@@ -2,7 +2,7 @@
 # frozen_string_literal: true
 
 require "bundler/setup"
-require "omniauth_nitro_id"
+require "omniauth-nitro-id"
 
 require "irb"
 IRB.start

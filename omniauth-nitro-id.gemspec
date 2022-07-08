@@ -14,7 +14,7 @@ Gem::Specification.new do |spec|
   spec.required_ruby_version = ">= 2.7.0"
 
   spec.files         = `git ls-files`.split("\n")
-  spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
+  spec.executables   = []
   spec.require_paths = ["lib"]
 
   spec.add_dependency "omniauth_openid_connect", "~> 0.4.0"

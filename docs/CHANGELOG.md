@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.0] - 2022-12-14
+
+### Added
+
+* Add support for `id_token_hint`. PR [#8](https://github.com/powerhome/omniauth-nitro-id/pull/8)
+
 ## [1.0.0] - 2022-12-05
 
 ### Added
@@ -14,4 +20,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Initial release
 
 [Unreleased]: https://github.com/powerhome/omniauth-nitro-id/compare/v1.0.0...HEAD
+[1.1.0]: https://github.com/powerhome/omniauth-nitro-id/releases/tag/v1.1.0
 [1.0.0]: https://github.com/powerhome/omniauth-nitro-id/releases/tag/v1.0.0

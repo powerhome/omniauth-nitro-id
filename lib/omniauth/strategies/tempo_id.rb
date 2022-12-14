@@ -1,18 +1,14 @@
 # frozen_string_literal: true
 
-require "omniauth_openid_connect"
+require_relative "base_strategy"
 
 module OmniAuth
   module Strategies
-    class TempoId < OmniAuth::Strategies::OpenIDConnect
-      DEFAULT_STRATEGY_NAME = "tempo_id"
-      DEFAULT_ISSUER = "https://id.streamfinancial.io/"
-      DEFAULT_HOST = "id.streamfinancial.io"
-
-      option :name, DEFAULT_STRATEGY_NAME
+    class TempoId < BaseStrategy
+      option :name, "tempo_id"
       option :discovery, true
-      option :issuer, DEFAULT_ISSUER
-      option :client_options, host: DEFAULT_HOST
+      option :issuer, "https://id.streamfinancial.io/"
+      option :client_options, host: "id.streamfinancial.io"
     end
   end
 end

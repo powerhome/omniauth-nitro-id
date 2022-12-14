@@ -42,7 +42,7 @@ module OmniAuth
         query = {
           post_logout_redirect_uri: options.post_logout_redirect_uri
         }
-        query.merge({ id_token_hint: params["id_token_hint"] }) if params["id_token_hint"]
+        query = query.merge({ id_token_hint: params["id_token_hint"] }) if params["id_token_hint"]
 
         URI.encode_www_form(query)
       end

@@ -15,7 +15,7 @@ module Extensions
       def endpoint
         URI::Generic.build(scheme: scheme, host: host, port: port, path: path)
       rescue URI::Error => e
-        raise SWD::Exception.new(e.message)
+        raise SWD::Exception, e.message
       end
 
       prepend_features(::OpenIDConnect::Discovery::Provider::Config::Resource)

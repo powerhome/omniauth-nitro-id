@@ -16,7 +16,7 @@ module OmniAuth
                         end
       end
 
-      private
+    private
 
       def fetch_key
         @fetch_key ||= parse_jwk_key(::OpenIDConnect.http_client.get_content(client_options.jwks_uri))
@@ -28,11 +28,7 @@ module OmniAuth
           when :HS256, :HS384, :HS512
             client_options.secret
           when :RS256, :RS384, :RS512
-            if options.client_jwk_signing_key
-              parse_jwk_key(options.client_jwk_signing_key)
-            elsif options.client_x509_signing_key
-              parse_x509_key(options.client_x509_signing_key)
-            end
+            parse_key
           end
       end
 
@@ -40,11 +36,19 @@ module OmniAuth
         return unless options.post_logout_redirect_uri
 
         query = {
-          post_logout_redirect_uri: options.post_logout_redirect_uri
+          post_logout_redirect_uri: options.post_logout_redirect_uri,
         }
         query = query.merge({ id_token_hint: params["id_token_hint"] }) if params["id_token_hint"]
 
         URI.encode_www_form(query)
+      end
+
+      def parse_key
+        if options.client_jwk_signing_key
+          parse_jwk_key(options.client_jwk_signing_key)
+        elsif options.client_x509_signing_key
+          parse_x509_key(options.client_x509_signing_key)
+        end
       end
     end
   end

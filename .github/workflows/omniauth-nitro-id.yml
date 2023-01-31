@@ -1,83 +1,14 @@
 name: omniauth-nitro-id
 
 on:
-  workflow_call:
-    secrets:
-      rubygems_api_key:
-        required: true
-    inputs:
-      before_build:
-        type: string
-        required: false
-      package:
-        required: true
-        type: string
-      workdir:
-        required: false
-        type: string
-      ruby:
-        default: '["2.7", "3.1"]'
-        required: false
-        type: string
-      rails:
-        default: '["any"]'
-        required: false
-        type: string
+  push:
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    name: Ruby ${{ matrix.ruby }} / Rails ${{ matrix.rails }} / Bundler ${{ matrix.bundler }}
-    strategy:
-      fail-fast: false
-      matrix:
-        ruby: ${{ fromJSON(inputs.ruby) }}
-        rails: ${{ fromJSON(inputs.rails) }}
-        exclude:
-          - rails: '5.2'
-            ruby: '3.1'
-          - rails: '5.2'
-            ruby: '3.0'
-          - rails: '6.0'
-            ruby: '3.0'
-          - rails: '6.0'
-            ruby: '3.1'
-          - rails: '7.0'
-            ruby: '2.7'
-          - rails: '7.0'
-            ruby: '3.0'
-          - ruby: '3.1'
-            bundler: '1'
-    env:
-      RAILS_VERSION: '~> ${{ matrix.rails }}'
-      RAILS_ENV: test
-    steps:
-      - uses: actions/checkout@v3
-      - name: Set up Ruby
-        uses: ruby/setup-ruby@v1
-        env:
-          RAILS_VERSION: '~> ${{ matrix.rails }}'
-        with:
-          ruby-version: ${{ matrix.ruby }}
-          working-directory: ${{ inputs.workdir }}
-      - name: Before build
-        if: ${{ inputs.before_build != '' }}
-        run: '${{ inputs.before_build }}'
-      - name: Run the build script
-        working-directory: ${{ inputs.workdir }}
-        run: bundle exec rake
-      - name: Ensure license compliance
-        working-directory: ${{ inputs.workdir }}
-        run: bundle exec license_finder
-  release:
-    needs: build
-    runs-on: ubuntu-latest
-    if: ${{ contains(github.ref, 'refs/tags/v') && contains(github.ref, inputs.package) }}
-    steps:
-      - uses: actions/checkout@v3
-      - uses: xjunior/publish-rubygems-action@master
-        env:
-          RELEASE_COMMAND: rake build release:guard_clean release:rubygem_push
-          RUBYGEMS_API_KEY: ${{ secrets.rubygems_api_key }}
-          WORKDIR: ${{ inputs.workdir }}
-
+  ruby:
+    uses: powerhome/power-tools/.github/workflows/_ruby-package.yml@main
+    with:
+      package: '${{ github.workflow }}'
+      workdir: '${{ github.workflow }}'
+      ruby: '["2.7", "3.0", "3.1"]'
+      rails: '["any"]'
+    secrets: inherit

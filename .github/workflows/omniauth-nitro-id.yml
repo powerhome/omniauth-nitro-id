@@ -1,0 +1,13 @@
+name: omniauth-nitro-id
+
+on:
+  push:
+
+jobs:
+  ruby:
+    uses: powerhome/power-tools/.github/workflows/_ruby-package.yml@main
+    with:
+      package: '${{ github.workflow }}'
+      ruby: '["2.7", "3.0", "3.1"]'
+      rails: '["any"]'
+    secrets: inherit

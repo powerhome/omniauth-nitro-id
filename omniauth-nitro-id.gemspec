@@ -18,6 +18,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_dependency "omniauth_openid_connect", "~> 0.4.0"
+  spec.add_dependency "omniauth-rails_csrf_protection", "1.0.1"
 
   spec.add_development_dependency "bundler"
   spec.add_development_dependency "guard-rspec"

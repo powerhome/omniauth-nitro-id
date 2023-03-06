@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.1] - 2023-03-06
+
+### Added
+
+* Add `omniauth-rails_csrf_protection` dependency. PR [#12](https://github.com/powerhome/omniauth-nitro-id/pull/12)
+
 ## [1.1.0] - 2022-12-14
 
 ### Added
@@ -19,6 +25,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 * Initial release
 
-[Unreleased]: https://github.com/powerhome/omniauth-nitro-id/compare/v1.0.0...HEAD
+[Unreleased]: https://github.com/powerhome/omniauth-nitro-id/compare/v1.1.1...HEAD
+[1.1.1]: https://github.com/powerhome/omniauth-nitro-id/releases/tag/v1.1.1
 [1.1.0]: https://github.com/powerhome/omniauth-nitro-id/releases/tag/v1.1.0
 [1.0.0]: https://github.com/powerhome/omniauth-nitro-id/releases/tag/v1.0.0

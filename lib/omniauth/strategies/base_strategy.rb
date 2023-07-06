@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "jwt"
+
 require "omniauth_openid_connect"
 require_relative "../../extensions/discovery"
 
@@ -14,6 +16,20 @@ module OmniAuth
                         elsif client_options.jwks_uri
                           fetch_key
                         end
+      end
+
+      def self.decode_logout_token(token)
+        jwks = fetch_jwks
+        jwks.filter! { |key| key[:use] == "sig" }
+        algorithms = jwks.filter_map { |key| key[:alg] }.uniq
+        JWT.decode(token, nil, true, algorithms: algorithms, jwks: jwks)
+      end
+
+      def self.fetch_jwks
+        conn = Faraday.new(url: default_options[:issuer]) { |faraday| faraday.response :raise_error }
+        response = conn.get(".well-known/jwks.json")
+        jwks = JSON.parse(response.body)
+        JWT::JWK::Set.new(jwks)
       end
 
     private

@@ -20,8 +20,8 @@ module OmniAuth
 
       def self.decode_logout_token(token)
         jwks = fetch_jwks
-        jwks.filter! {|key| key[:use] == 'sig' }
-        algorithms = jwks.map { |key| key[:alg] }.compact.uniq
+        jwks.filter! { |key| key[:use] == "sig" }
+        algorithms = jwks.filter_map { |key| key[:alg] }.uniq
         JWT.decode(token, nil, true, algorithms: algorithms, jwks: jwks)
       end
 

@@ -26,7 +26,7 @@ module OmniAuth
       end
 
       def self.fetch_jwks
-        conn = Faraday.new(url: self::ISSUER) { |faraday| faraday.response :raise_error }
+        conn = Faraday.new(url: default_options[:issuer]) { |faraday| faraday.response :raise_error }
         response = conn.get(".well-known/jwks.json")
         jwks = JSON.parse(response.body)
         JWT::JWK::Set.new(jwks)

@@ -31,4 +31,13 @@ config.omniauth :nitro_id, {
 }
 ```
 
+Decoding NitroID's RSA256-encoded logout token
+```ruby
+token = params[:logout_token]
+# eyJhbGciOiJSUzI1NiIsImtpZCI6InB1YmxpYzpoeWRyYS5vcGVuaWQuaWQtdG9rZW4iLCJ0eXAiOiJK...
+
+OmniAuth::Strategies::NitroId.decode_logout_token(token)
+# [{"aud"=>["196da0d5-adc6-4454-98f2-3cabae04855c"], "events"=>{"http://schemas.openid.net/event/backchannel-logout"=>{}}, "iat"=>1688672696, "iss"=>"https://id.powerhrg.com/" ...
+```
+
 Check out Power's [example Rails app](https://github.com/powerhome/example-rails-app) for details on how to use this gem with Devise.

@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.2.0] - 2023-07-24
+
+### Added
+
+* Add `decode_logout_token` method. PR [#13](https://github.com/powerhome/omniauth-nitro-id/pull/13)
+
 ## [1.1.1] - 2023-03-06
 
 ### Added
@@ -25,7 +31,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 * Initial release
 
-[Unreleased]: https://github.com/powerhome/omniauth-nitro-id/compare/v1.1.1...HEAD
+[Unreleased]: https://github.com/powerhome/omniauth-nitro-id/compare/v1.2.0...HEAD
+[1.2.0]: https://github.com/powerhome/omniauth-nitro-id/releases/tag/v1.2.0
 [1.1.1]: https://github.com/powerhome/omniauth-nitro-id/releases/tag/v1.1.1
 [1.1.0]: https://github.com/powerhome/omniauth-nitro-id/releases/tag/v1.1.0
 [1.0.0]: https://github.com/powerhome/omniauth-nitro-id/releases/tag/v1.0.0

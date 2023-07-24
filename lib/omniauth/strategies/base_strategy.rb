@@ -22,9 +22,9 @@ module OmniAuth
       end
 
       def self.fetch_jwks
-        key = ::OpenIDConnect.http_client.get(default_options[:issuer] + ".well-known/jwks.json").body
+        key = ::OpenIDConnect.http_client.get("#{default_options[:issuer]}.well-known/jwks.json").body
         json = key.is_a?(String) ? JSON.parse(key) : key
-        return JSON::JWK::Set.new(json['keys']) if json.key?('keys')
+        return JSON::JWK::Set.new(json["keys"]) if json.key?("keys")
 
         JSON::JWK.new(json)
       end

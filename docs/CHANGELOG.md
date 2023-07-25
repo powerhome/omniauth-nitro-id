@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.2.1] - 2023-07-25
+
+### Added
+
+* Removed Faraday and JWT dependencies. PR [#14](https://github.com/powerhome/omniauth-nitro-id/pull/4)
+
 ## [1.2.0] - 2023-07-24
 
 ### Added
@@ -31,7 +37,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 * Initial release
 
-[Unreleased]: https://github.com/powerhome/omniauth-nitro-id/compare/v1.2.0...HEAD
+[Unreleased]: https://github.com/powerhome/omniauth-nitro-id/compare/v1.2.1...HEAD
+[1.2.1]: https://github.com/powerhome/omniauth-nitro-id/releases/tag/v1.2.1
 [1.2.0]: https://github.com/powerhome/omniauth-nitro-id/releases/tag/v1.2.0
 [1.1.1]: https://github.com/powerhome/omniauth-nitro-id/releases/tag/v1.1.1
 [1.1.0]: https://github.com/powerhome/omniauth-nitro-id/releases/tag/v1.1.0

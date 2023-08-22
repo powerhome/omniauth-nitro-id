@@ -29,6 +29,21 @@ module OmniAuth
         JSON::JWK.new(json)
       end
 
+      def self.introspect_token(token, api_key)
+        options = {
+          header: { Authorization: api_key },
+          body: { token: token },
+        }
+
+        response = ::OpenIDConnect.http_client.post("#{default_options[:issuer]}api/tokens/introspect", **options)
+
+        if response.status.to_i >= 400
+          raise HTTPClient::BadResponseError, "#{default_options[:name]} error: #{response.status}"
+        end
+
+        JSON.parse(response.body)
+      end
+
     private
 
       def fetch_key

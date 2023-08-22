@@ -2,6 +2,6 @@
 
 module OmniAuth
   module NitroId
-    VERSION = "1.2.1"
+    VERSION = "1.3.0"
   end
 end

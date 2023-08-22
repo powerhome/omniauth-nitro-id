@@ -6,6 +6,8 @@ require_relative "../../extensions/discovery"
 module OmniAuth
   module Strategies
     class BaseStrategy < OmniAuth::Strategies::OpenIDConnect
+      class APIError < StandardError; end
+
       def public_key
         @public_key ||= if options.discovery
                           config.jwks
@@ -38,7 +40,7 @@ module OmniAuth
         response = ::OpenIDConnect.http_client.post("#{default_options[:issuer]}api/tokens/introspect", **options)
 
         if response.status.to_i >= 400
-          raise HTTPClient::BadResponseError, "#{default_options[:name]} error: #{response.status}"
+          raise APIError, "#{default_options[:name]} error: #{response.status}"
         end
 
         JSON.parse(response.body)

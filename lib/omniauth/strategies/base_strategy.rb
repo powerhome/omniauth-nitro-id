@@ -6,6 +6,8 @@ require_relative "../../extensions/discovery"
 module OmniAuth
   module Strategies
     class BaseStrategy < OmniAuth::Strategies::OpenIDConnect
+      class APIError < StandardError; end
+
       def public_key
         @public_key ||= if options.discovery
                           config.jwks
@@ -27,6 +29,19 @@ module OmniAuth
         return JSON::JWK::Set.new(json["keys"]) if json.key?("keys")
 
         JSON::JWK.new(json)
+      end
+
+      def self.introspect_token(token, api_key)
+        options = {
+          header: { Authorization: api_key },
+          body: { token: token },
+        }
+
+        response = ::OpenIDConnect.http_client.post("#{default_options[:issuer]}api/tokens/introspect", **options)
+
+        raise APIError, "#{default_options[:name]} error: #{response.status}" if response.status.to_i >= 400
+
+        JSON.parse(response.body)
       end
 
     private

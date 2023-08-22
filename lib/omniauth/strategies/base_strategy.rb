@@ -39,9 +39,7 @@ module OmniAuth
 
         response = ::OpenIDConnect.http_client.post("#{default_options[:issuer]}api/tokens/introspect", **options)
 
-        if response.status.to_i >= 400
-          raise APIError, "#{default_options[:name]} error: #{response.status}"
-        end
+        raise APIError, "#{default_options[:name]} error: #{response.status}" if response.status.to_i >= 400
 
         JSON.parse(response.body)
       end

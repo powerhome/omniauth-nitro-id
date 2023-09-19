@@ -22,9 +22,8 @@ module OmniAuth
       def client
         super
       rescue AttrRequired::AttrMissing
-        raise ClientCredentialsError.new(
-          "#{options[:name].camelize} client credentials not found. Please check your environment."
-        )
+        raise ClientCredentialsError,
+              "#{options[:name].camelize} client credentials not found. Please check your environment."
       end
 
       def self.decode_logout_token(token)

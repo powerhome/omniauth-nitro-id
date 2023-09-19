@@ -7,6 +7,7 @@ module OmniAuth
   module Strategies
     class BaseStrategy < OmniAuth::Strategies::OpenIDConnect
       class APIError < StandardError; end
+      class ClientCredentialsError < StandardError; end
 
       def public_key
         @public_key ||= if options.discovery
@@ -16,6 +17,13 @@ module OmniAuth
                         elsif client_options.jwks_uri
                           fetch_key
                         end
+      end
+
+      def client
+        super
+      rescue AttrRequired::AttrMissing
+        raise ClientCredentialsError,
+              "#{options[:name].camelize} client credentials not found. Please check your environment."
       end
 
       def self.decode_logout_token(token)

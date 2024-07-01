@@ -7,7 +7,7 @@ module OmniAuth
     class TempoId < BaseStrategy
       option :name, "tempo_id"
       option :discovery, true
-      option :issuer, "https://id.streamfinancial.io/"
+      option :issuer, "https://id.streamfinancial.io"
       option :client_options, host: "id.streamfinancial.io"
     end
   end

@@ -7,7 +7,7 @@ module OmniAuth
     class NitroId < BaseStrategy
       option :name, "nitro_id"
       option :discovery, true
-      option :issuer, "https://id.powerhrg.com/"
+      option :issuer, "https://id.powerhrg.com"
       option :client_options, host: "id.powerhrg.com"
     end
   end

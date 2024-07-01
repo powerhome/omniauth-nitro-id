@@ -31,7 +31,7 @@ describe OmniAuth::Strategies::NitroId do
     end
 
     it "should have correct issuer" do
-      expect(subject.options.issuer).to eq "https://id.powerhrg.com/"
+      expect(subject.options.issuer).to eq "https://id.powerhrg.com"
     end
 
     it "should have the correct discovery setting" do

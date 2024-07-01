@@ -31,7 +31,7 @@ describe OmniAuth::Strategies::TempoId do
     end
 
     it "should have correct issuer" do
-      expect(subject.options.issuer).to eq "https://id.streamfinancial.io/"
+      expect(subject.options.issuer).to eq "https://id.streamfinancial.io"
     end
 
     it "should have the correct discovery setting" do

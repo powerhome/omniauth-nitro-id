@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
   spec.description   = "NitroID Strategy for OmniAuth."
   spec.homepage      = "https://github.com/powerhome/omniauth-nitro-id"
   spec.license       = "MIT"
-  spec.required_ruby_version = ">= 2.7.0"
+  spec.required_ruby_version = ">= 3.1.0"
 
   spec.files         = `git ls-files`.split("\n")
   spec.executables   = []

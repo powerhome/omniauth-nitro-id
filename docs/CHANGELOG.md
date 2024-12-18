@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Removed
+
+* Removed support for ruby 2.7 and ruby 3.0
+
 ### Changed
 
 * Use dynamic issuer for JWK discovery and token introspection

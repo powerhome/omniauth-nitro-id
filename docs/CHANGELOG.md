@@ -7,6 +7,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+* Use dynamic issuer for JWK discovery and token intropsection
+
+## [1.3.3] - 2024-07-01
+
+### Fixed
+
+* Correct URLs for JWK discovery and token introspection. PR [#43](https://github.com/powerhome/omniauth-nitro-id/pull/43)
+
+## [1.3.2] - 2024-06-30
+
+### Fixed
+
+* Correct default issuer value for nitro-id and tempo-id strategies. PR [#41](https://github.com/powerhome/omniauth-nitro-id/pull/41)
+
 ## [1.3.1] - 2023-09-21
 
 * Display better error message for missing credentials. PR [#27](https://github.com/powerhome/omniauth-nitro-id/pull/27)

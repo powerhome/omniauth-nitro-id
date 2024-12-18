@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-* Use dynamic issuer for JWK discovery and token intropsection
+* Use dynamic issuer for JWK discovery and token introspection
 
 ## [1.3.3] - 2024-07-01
 

@@ -32,7 +32,7 @@ module OmniAuth
       end
 
       def self.fetch_jwks
-        key = ::OpenIDConnect.http_client.get("#{default_options[:issuer]}/.well-known/jwks.json").body
+        key = ::OpenIDConnect.http_client.get("#{options[:issuer]}/.well-known/jwks.json").body
         json = key.is_a?(String) ? JSON.parse(key) : key
         return JSON::JWK::Set.new(json["keys"]) if json.key?("keys")
 
@@ -45,9 +45,9 @@ module OmniAuth
           body: { token: token },
         }
 
-        response = ::OpenIDConnect.http_client.post("#{default_options[:issuer]}/api/tokens/introspect", **options)
+        response = ::OpenIDConnect.http_client.post("#{options[:issuer]}/api/tokens/introspect", **options)
 
-        raise APIError, "#{default_options[:name]} error: #{response.status}" if response.status.to_i >= 400
+        raise APIError, "#{options[:name]} error: #{response.status}" if response.status.to_i >= 400
 
         JSON.parse(response.body)
       end

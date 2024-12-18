@@ -5,8 +5,8 @@ require File.expand_path("lib/omniauth/nitro_id/version", __dir__)
 Gem::Specification.new do |spec|
   spec.name          = "omniauth-nitro-id"
   spec.version       = OmniAuth::NitroId::VERSION
-  spec.authors       = ["Stephen Greer"]
-  spec.email         = ["stephen.greer@powerhrg.com"]
+  spec.authors       = ["Stephen Greer", "Katie Edgar"]
+  spec.email         = ["stephen.greer@powerhrg.com", "k.weber0893@gmail.com"]
   spec.summary       = "NitroID Strategy for OmniAuth."
   spec.description   = "NitroID Strategy for OmniAuth."
   spec.homepage      = "https://github.com/powerhome/omniauth-nitro-id"

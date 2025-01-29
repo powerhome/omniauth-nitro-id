@@ -39,6 +39,15 @@ module OmniAuth
         JSON::JWK.new(json)
       end
 
+      def self.refresh_token(api_key, refresh_token, client_id, client_secret)
+        options = {
+          header: { Authorization: api_key },
+          body: { refresh_token: refresh_token, client_id: client_id, client_secret: client_secret },
+        }
+
+        ::OpenIDConnect.http_client.post("#{default_options[:issuer]}/api/tokens/refresh", **options)
+      end
+
       def self.introspect_token(token, api_key)
         options = {
           header: { Authorization: api_key },

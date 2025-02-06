@@ -39,6 +39,25 @@ module OmniAuth
         JSON::JWK.new(json)
       end
 
+      def self.refresh_token(refresh_token, client_id, client_secret)
+        uri = URI.parse("#{options[:issuer]}/oauth2/token")
+
+        request = Net::HTTP::Post.new(uri)
+        request.basic_auth(client_id, client_secret)
+        request.set_form_data(
+          grant_type: "refresh_token",
+          refresh_token: refresh_token
+        )
+
+        response = Net::HTTP.start(uri.hostname, uri.port, { use_ssl: uri.scheme == "https" }) do |http|
+          http.request(request)
+        end
+
+        raise APIError, "API Error: #{response.code}" if response.code.to_i >= 400
+
+        JSON.parse(response.body)
+      end
+
       def self.introspect_token(token, api_key)
         options = {
           header: { Authorization: api_key },

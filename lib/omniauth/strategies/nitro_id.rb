@@ -7,8 +7,8 @@ module OmniAuth
     class NitroId < BaseStrategy
       option :name, "nitro_id"
       option :discovery, true
-      option :issuer, "https://pr1609.nitro-id.beta.px.powerapp.cloud"
-      option :client_options, host: "pr1609.nitro-id.beta.px.powerapp.cloud"
+      option :issuer, "https://id.powerhrg.com"
+      option :client_options, host: "id.powerhrg.com"
     end
   end
 end

@@ -40,7 +40,7 @@ module OmniAuth
       end
 
       def self.refresh_token(refresh_token, client_id, client_secret)
-        uri = URI.parse("#{default_options[:issuer]}/oauth2/token")
+        uri = URI.parse("#{options[:issuer]}/oauth2/token")
 
         request = Net::HTTP::Post.new(uri)
         request.basic_auth(client_id, client_secret)

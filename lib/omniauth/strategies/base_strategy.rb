@@ -63,7 +63,7 @@ module OmniAuth
           header: { Authorization: api_key },
           body: { token: token },
         }
-
+        Logger.new(STDOUT).info("----- OPTIONS[:issuer] -----\n#{options[:issuer]}")
         response = ::OpenIDConnect.http_client.post("#{options[:issuer]}/api/tokens/introspect", **options)
 
         raise APIError, "#{options[:name]} error: #{response.status}" if response.status.to_i >= 400

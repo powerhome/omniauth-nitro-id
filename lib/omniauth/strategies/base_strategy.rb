@@ -59,11 +59,11 @@ module OmniAuth
       end
 
       def self.introspect_token(token, api_key)
-        params = {
+        options = {
           header: { Authorization: api_key },
           body: { token: token },
         }
-        response = ::OpenIDConnect.http_client.post("/api/tokens/introspect", **params)
+        response = ::OpenIDConnect.http_client.post("#{options[:issuer]}/api/tokens/introspect", **options)
 
         raise APIError, "#{options[:name]} error: #{response.status}" if response.status.to_i >= 400
 

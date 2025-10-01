@@ -26,32 +26,6 @@ module OmniAuth
               "#{options[:name].camelize} client credentials not found. Please check your environment."
       end
 
-      def self.decode_logout_token(token)
-        jwks = fetch_jwks
-        JSON::JWT.decode(token, jwks)
-      end
-
-      def self.fetch_jwks
-        key = ::OpenIDConnect.http_client.get("#{options[:issuer]}/.well-known/jwks.json").body
-        json = key.is_a?(String) ? JSON.parse(key) : key
-        return JSON::JWK::Set.new(json["keys"]) if json.key?("keys")
-
-        JSON::JWK.new(json)
-      end
-
-      def self.introspect_token(token, api_key)
-        options = {
-          header: { Authorization: api_key },
-          body: { token: token },
-        }
-
-        response = ::OpenIDConnect.http_client.post("#{options[:issuer]}/api/tokens/introspect", **options)
-
-        raise APIError, "#{options[:name]} error: #{response.status}" if response.status.to_i >= 400
-
-        JSON.parse(response.body)
-      end
-
     private
 
       def fetch_key

@@ -25,8 +25,8 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "license_finder", ">= 7.0"
   spec.add_development_dependency "net-smtp"
   spec.add_development_dependency "pry"
-  spec.add_development_dependency "rake", "13.0.6"
-  spec.add_development_dependency "rspec", "3.11.0"
-  spec.add_development_dependency "rubocop", "1.31.1"
+  spec.add_development_dependency "rake", "13.4.2"
+  spec.add_development_dependency "rspec", "3.13.2"
+  spec.add_development_dependency "rubocop", "1.92.2"
   spec.add_development_dependency "rubocop-powerhome", ">= 0.4.1"
 end
